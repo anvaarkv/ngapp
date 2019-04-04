@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
+  title = "Couses App";
   newcomponent = "Entered in new component created";
   months = ["January", "Feburary", "March", "April", "May", 
   "June", "July", "August", "September",
