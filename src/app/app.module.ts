@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
+import { AuthGuard } from './auth.guard';
+import {AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,7 @@ import { AdminComponent } from './admin/admin.component';
     CoursesComponent,
     HomeComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import { AdminComponent } from './admin/admin.component';
       },
       {
         path : 'admin',
-        component: AdminComponent
+        component: AdminComponent,
+        canActivate: [AuthGuard]
       },
       {
         path : 'courses',
@@ -41,7 +44,7 @@ import { AdminComponent } from './admin/admin.component';
       }
     ])
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
