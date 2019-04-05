@@ -14,12 +14,14 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  private loggedInStatus: boolean = false;
+  private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
   setLoggedIn(value: boolean) {
+    localStorage.setItem('loggedIn','true');
     this.loggedInStatus = value
   }
 
   get isLoggedIn() {
+    localStorage.getItem('loggedIn');
     return this.loggedInStatus
   }
 

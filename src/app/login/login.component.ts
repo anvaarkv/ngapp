@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
       }
       this.resp = data.message;
     });
-    console.log(username);
-    console.log(password);
+    //console.log(username);
+    //console.log(password);
   }
 
 }

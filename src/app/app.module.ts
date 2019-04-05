@@ -16,7 +16,6 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
-
 const appRoutes: Routes =  [
       {
         path : '',
