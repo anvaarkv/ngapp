@@ -19,7 +19,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 const appRoutes: Routes =  [
       {
         path : '',
-        component: HomeComponent
+        redirectTo:'login',
+        pathMatch:'full',
       },
       {
         path : '*',
