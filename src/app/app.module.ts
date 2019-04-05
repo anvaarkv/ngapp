@@ -4,34 +4,35 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoursesComponent } from './courses/courses.component';
-import { RouterModule} from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { AuthGuard } from './auth.guard';
 import {AuthService } from './auth.service';
+import { RegisterComponent } from './register/register.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    CoursesComponent,
-    HomeComponent,
-    LoginComponent,
-    AdminComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    RouterModule.forRoot([
+
+
+const appRoutes: Routes =  [
       {
         path : '',
+        component: HomeComponent
+      },
+      {
+        path : '*',
+        component: PagenotfoundComponent
+      },
+      {
+        path : 'login',
         component: LoginComponent
       },
       {
-        path : 'home',
-        component: AppComponent
+        path : 'register',
+        component: RegisterComponent
       },
       {
         path : 'admin',
@@ -42,7 +43,28 @@ import {AuthService } from './auth.service';
         path : 'courses',
         component: CoursesComponent
       }
-    ])
+];
+@NgModule({
+  declarations: [
+    AppComponent,
+    CoursesComponent,
+    HomeComponent,
+    LoginComponent,
+    AdminComponent,
+    RegisterComponent,
+    PagenotfoundComponent,
+   
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true }
+    )
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

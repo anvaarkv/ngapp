@@ -31,5 +31,13 @@ export class AuthService {
     })
   }
 
+  registerUser(email,password) {
+    // post these details to API server return user info if correct
+    return this.http.post<myData>('/api/register.php', {
+      email,
+      password
+    })
+  }
+
 
 }
