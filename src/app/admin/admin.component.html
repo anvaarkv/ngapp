@@ -1,9 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 offset-lg-2 jumbotron">
+    <div class="col-12 jumbotron">
       <h2 class="display-3">Admin Works</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe commodi repellat doloribus, perferendis ullam alias, accusamus animi fugiat aliquam atque? Mollitia voluptate aut necessitatibus deserunt. Eligendi voluptatum repudiandae earum explicabo quia optio recusandae nobis vel rerum accusamus ducimus aspernatur blanditiis perspiciatis sint, temporibus laudantium labore adipisci deserunt nisi quo sequi excepturi delectus nihil! Alias quia vero quibusdam. Ea saepe natus totam, magnam corporis error illo magni at eius sint, quos quam praesentium minus a fugit voluptas, voluptatibus optio mollitia dolorum ducimus excepturi quidem commodi impedit quibusdam. A similique voluptatibus consequatur distinctio libero? Officiis magnam unde perferendis nulla animi numquam.</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim saepe commodi repellat doloribus, perferendis ullam alias, accusamus animi fugiat aliquam atque? Mollitia voluptate aut necessitatibus deserunt.</p>
       <button (click)='logout()' class="btn btn-outline-info">Logout</button>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-12">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item" [ngClass]="{'disabled': links?.prev == null ? true : null}"><button class="page-link" href='#' [attr.disabled]="links?.prev == null ? true : null"  (click)='navigation(links.prev)'>Previous</button></li>
+          <li class="page-item"><button class="page-link" >{{meta?.current_page | number}} of {{meta?.last_page | number}}</button></li>
+          <li class="page-item" [ngClass]="{'disabled': links?.next == null ? true : null}"><button class="page-link" href='#' [attr.disabled]="links?.next == null ? true : null"  (click)='navigation(links.next)'>Next</button></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="clearfix"></div>
+    <div *ngFor="let article of articles; let i = index" class="col-sm-4 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><span class="badge badge-info">{{i+1}}</span> {{article.title | slice:0:20}} ..</h5>
+          <p class="card-text">{{article.description | slice:0:80}}...</p>
+          <a href="#" class="btn btn-primary">More! </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
