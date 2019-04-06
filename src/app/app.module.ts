@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoursesComponent } from './courses/courses.component';
@@ -14,6 +13,8 @@ import {AuthService } from './auth.service';
 import { RegisterComponent } from './register/register.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { LayoutComponent } from './layout/layout.component';
+import { HeaderComponent ,FooterComponent } from './layout/';
 
 
 const appRoutes: Routes =  [
@@ -53,6 +54,9 @@ const appRoutes: Routes =  [
     AdminComponent,
     RegisterComponent,
     PagenotfoundComponent,
+    LayoutComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,8 +65,7 @@ const appRoutes: Routes =  [
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true }
+      appRoutes
     )
   ],
   providers: [AuthGuard],

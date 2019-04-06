@@ -23,7 +23,7 @@ export class AdminComponent implements OnInit {
       this.articles = response.data;
       this.meta = response.meta;
       this.links = response.links;
-    });
+    },error => console.log(error));
   }
 
   navigation(url){
@@ -33,7 +33,7 @@ export class AdminComponent implements OnInit {
       this.articles = response.data;
       this.meta = response.meta;
       this.links = response.links;
-    });
+    },error => console.log(error));
   }
   fetchArticles(){
     this.http.get<any>(this.url)
@@ -46,8 +46,7 @@ export class AdminComponent implements OnInit {
   }
 
   logout(){
-    alert('Logout');
-    
+    //alert('Logout');
     localStorage.removeItem('loggedIn');
     this.router.navigate(['login']);
   }

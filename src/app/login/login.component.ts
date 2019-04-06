@@ -3,6 +3,8 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +12,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private Auth : AuthService, private router: Router,private formBuilder:FormBuilder) { }
+  constructor(private Auth : AuthService,
+     private router: Router,
+     private formBuilder:FormBuilder) { }
   resp:string = '';
   title:string = 'Login';
   submitted = false;
@@ -26,7 +30,6 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     event.preventDefault();
     if (this.loginFrom.invalid) {
-      //alert('Invalid');
       return;
     }
 
@@ -37,15 +40,12 @@ export class LoginComponent implements OnInit {
       if(data.success) {
         this.router.navigate(['admin']);
         this.Auth.setLoggedIn(true);
-        //window.alert(data.message);
       } else {
-        //this.resp = data.message;
-        //window.alert(data.message);
+
       }
       this.resp = data.message;
     });
-    //console.log(username);
-    //console.log(password);
+
   }
 
 }
