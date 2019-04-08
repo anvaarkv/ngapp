@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Title } from '@angular/platform-browser';
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -14,7 +15,12 @@ export class LoginComponent implements OnInit {
 
   constructor(private Auth : AuthService,
      private router: Router,
-     private formBuilder:FormBuilder) { }
+     private formBuilder:FormBuilder,
+     private titleServices:Title,
+     private Data : DataService
+     ) {
+
+      }
   resp:string = '';
   title:string = 'Login';
   submitted = false;
@@ -24,6 +30,7 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]]
   });
+  this.titleServices.setTitle('Login');
   }
   get f() { return this.loginFrom.controls; }
   Userlogin(event){
@@ -36,14 +43,17 @@ export class LoginComponent implements OnInit {
     const target = event.target;
     const username = target.querySelector('#username').value;
     const password = target.querySelector('#password').value;
-    this.Auth.getUserDetails(username,password).subscribe(data => {
-      if(data.success) {
+    this.Data.getUserDetails(username,password).subscribe(data => {
+      if(data.token) {
+        console.log(data.token);
         this.router.navigate(['admin']);
         this.Auth.setLoggedIn(true);
+        this.resp = 'LoggedIn Successfully - '+data.token;
       } else {
-
+        console.log(data.error);
+        this.resp = data.error;
       }
-      this.resp = data.message;
+      //this.resp = data.error;
     });
 
   }
