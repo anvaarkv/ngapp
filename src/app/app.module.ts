@@ -9,12 +9,11 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { AuthGuard } from './auth.guard';
-import {AuthService } from './auth.service';
 import { RegisterComponent } from './register/register.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LayoutComponent } from './layout/layout.component';
-import { HeaderComponent ,FooterComponent } from './layout/';
+import {LayoutModule} from './layout/layout.module';
 
 
 const appRoutes: Routes =  [
@@ -54,9 +53,6 @@ const appRoutes: Routes =  [
     AdminComponent,
     RegisterComponent,
     PagenotfoundComponent,
-    LayoutComponent,
-    HeaderComponent,
-    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +60,7 @@ const appRoutes: Routes =  [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    LayoutModule,
     RouterModule.forRoot(
       appRoutes
     )

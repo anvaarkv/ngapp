@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
+  title:string = 'Ng6 App';
   constructor() { 
     
   }
