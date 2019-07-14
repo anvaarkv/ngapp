@@ -44,14 +44,14 @@ export class LoginComponent implements OnInit {
     const username = target.querySelector('#username').value;
     const password = target.querySelector('#password').value;
     this.Data.getUserDetails(username,password).subscribe(data => {
-      if(data.token) {
-        console.log(data.token);
+      if(data.success) {
+        console.log(data);
         this.router.navigate(['admin']);
         this.Auth.setLoggedIn(true);
-        this.resp = 'LoggedIn Successfully - '+data.token;
+        this.resp = 'LoggedIn Successfully - '+data;
       } else {
-        console.log(data.error);
-        this.resp = data.error;
+        console.log(data.message);
+        this.resp = data.message;
       }
       //this.resp = data.error;
     });
